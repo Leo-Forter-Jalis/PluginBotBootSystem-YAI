@@ -113,7 +113,7 @@ public class BotLoadAndUnload {
         plugin.getLogger().info("Unload bots!");
     }
     private void unloadBot(TelegramBotPlugin plugin, Thread thread){
-        plugin.onDisabled();
+        plugin.onDisable();
         thread.interrupt();
         try {
             thread.join(5000);

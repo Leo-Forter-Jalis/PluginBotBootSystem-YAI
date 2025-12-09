@@ -1,13 +1,17 @@
 package com.lfj.plugin.patb.botmanager;
 
+import com.lfj.plugin.patb.botmanager.load.ThreadManager;
+
 public class Run {
     private DataHolder holder;
-    public Run(){
-        this.holder = DataHolder.getInstance();
+    private ThreadManager threadManager;
+    public Run(ThreadManager threadManager){
+        this.threadManager = threadManager;
     }
     public void run(){
-        for(String key : this.holder.keySet()){
-            this.holder.get(key).getThread().start();
-        }
+        this.threadManager.run();
+    }
+    public void run(String key){
+        this.threadManager.run(key);
     }
 }
