@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lfj.plugin.api.telegram.TelegramBotPlugin;
 import com.lfj.plugin.api.MetaData;
 import org.bukkit.plugin.java.JavaPlugin;
-
+// Outdated
 public class BotLoadAndUnload {
     private List<BotLoaderContainer> containers;
     private JavaPlugin plugin;
