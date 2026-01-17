@@ -16,17 +16,18 @@ import static com.lfj.plugin.telegrambot.algorithm.Enumeration.enumerationElemen
 import com.lfj.datacontroller.DataController;
 import com.lfj.datacontroller.PlayerData;
 
+import java.util.logging.Logger;
+
 public class Handle {
-    // Method add in list Players
 
-    public static void handle(String command, String[] arguments, TelegramClient client, Update update, JavaPlugin plugin){
-        if(command.equals("/add_me"))
-            handleAddMeCommand(arguments, client, update, plugin);
-        else if(command.equals("/start") || command.equals("/help"))
-            handleStartOrHelp(client, update, plugin);
+    public void handle(String command, String[] arguments, TelegramClient client, Update update, Logger logger){
+        //if(command.equals("/add_me"))
+            //handleAddMeCommand(arguments, client, update, plugin);
+        /*else*/ if(command.equals("/start") || command.equals("/help"))
+            handleStartOrHelp(client, update, logger);
     }
-
-    private static void handleAddMeCommand(String[] args, TelegramClient client, Update update, JavaPlugin plugin){
+    /*
+    private  void handleAddMeCommand(String[] args, TelegramClient client, Update update, JavaPlugin plugin){
         User user = update.getMessage().getFrom();
         DataController controller = plugin.getServer().getServicesManager().load(DataController.class);
         if(controller.contains(user.getId())){
@@ -47,9 +48,9 @@ public class Handle {
         });
         enumerationElements(args, data, user, plugin);
         controller.add(args[1], data);
-    }
+    }*/
     /*
-    private static void putData(String[] args, PlayerData data, User user){
+    private  void putData(String[] args, PlayerData data, User user){
         for(int i = 2; i < args.length; i++){
             if(args[i].startsWith("true") || args[i].startsWith("false")){
                 if(args[i].startsWith("true")) data.setSendCodeVerification(true);
@@ -64,7 +65,7 @@ public class Handle {
         data.setUuid(null);
     }
     */
-    public static void handleStartOrHelp(TelegramClient client, Update update, JavaPlugin plugin){
+    public  void handleStartOrHelp(TelegramClient client, Update update, Logger logger){
         String text = update.getMessage().getText();
         if(text.equals("/start"))
             sendMessageToUser(client, update.getMessage().getFrom(), "Доброго времени суток!\n" +
@@ -80,7 +81,7 @@ public class Handle {
                     "Пример:\n" +
                     "№1 /add_me Example dExample true #FFFFFF\n" +
                     "№2 /add_me Example true #f5b618\n" +
-                    "№3 /add_me Example", plugin);
+                    "№3 /add_me Example", logger);
         else if(text.equals("/help"))
             sendMessageToUser(client, update.getMessage().getFrom(), "Доброго времени суток!\n" +
                     "Данный бот добавит вас в список сервера и вы сможете зайти, но чтобы это сделать, нужно добавить себя в список. Как? Все очень просто:\n\n" +
@@ -95,12 +96,12 @@ public class Handle {
                     "Пример:\n" +
                     "№1 /add_me Example dExample true #FFFFFF\n" +
                     "№2 /add_me Example true #f5b618\n" +
-                    "№3 /add_me Example", plugin);
+                    "№3 /add_me Example", logger);
         else{
-            sendMessageToUser(client, update.getMessage().getFrom(), "Введите команду /start или /help для подробностей.", plugin);
+            sendMessageToUser(client, update.getMessage().getFrom(), "Введите команду /start или /help для подробностей.", logger);
         }
     }
-    private static void sendMessageToUser(TelegramClient client, User user, String text, JavaPlugin plugin){
+    private  void sendMessageToUser(TelegramClient client, User user, String text, Logger logger){
         SendMessage message = SendMessage
                 .builder()
                 .chatId(user.getId())
@@ -110,6 +111,6 @@ public class Handle {
         StringBuilder sb = new StringBuilder();
         sb.append("[UserID >> " + user.getId() + "], ")
                 .append("[Answer >> " + text + "]");
-        plugin.getLogger().info(sb.toString());
+        logger.info(sb.toString());
     }
 }

@@ -1,8 +1,7 @@
 {
-  "name": "Telegram-Bot",
+  "bot_name": "Test-Bot",
   "author": "Leo_Forter_Jalis",
-  "botType": "TG",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "mainClass": "com.lfj.plugin.telegrambot.TelegramBot"
+  "bot_type": "TG",
+  "version": "1.0",
+  "main_class": "com.test.Main"
 }

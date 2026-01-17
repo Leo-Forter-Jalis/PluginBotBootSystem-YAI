@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bot-test" />
+        <module name="api" />
         <module name="plugin" />
         <module name="bot" />
-        <module name="api" />
+        <module name="dependencies" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

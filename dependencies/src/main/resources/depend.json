@@ -1,0 +1,6 @@
+{
+  "name": "Test-Dependencies",
+  "author": "Leo_Forter_Jalis",
+  "version": "1.0",
+  "main_class": "com.lfj.plugin.depend.Main"
+}

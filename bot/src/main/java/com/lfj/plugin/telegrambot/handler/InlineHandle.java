@@ -15,9 +15,10 @@ import org.telegram.telegrambots.meta.api.methods.AnswerInlineQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class InlineHandle {
-    public static void inlineHandle(Update update, TelegramClient client, JavaPlugin plugin){
+    public static void inlineHandle(Update update, TelegramClient client, Logger logger){
         InlineQuery inlineQuery = update.getInlineQuery();
         User user = inlineQuery.getFrom();
 
@@ -45,7 +46,7 @@ public class InlineHandle {
                 .build();
         try {
             client.execute(answer);
-            plugin.getLogger().info("userID >> " + user.getId());
+            logger.info("userID >> " + user.getId());
         } catch (TelegramApiException e){ e.printStackTrace(); }
 
     }
